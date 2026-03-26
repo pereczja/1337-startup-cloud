@@ -281,15 +281,64 @@
 
         .stamp img { width: 70px; }
 
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .page { padding: 24px; }
-            .title-block h1 { font-size: 2rem; }
-            .two-col { grid-template-columns: 1fr; gap: 24px; }
+        /* ── Responsive: Tablet ── */
+        @media (max-width: 860px) {
+            .page { padding: 32px 28px 24px; }
+            .title-block h1 { font-size: 2.2rem; }
+            .two-col { grid-template-columns: 1fr; gap: 28px; }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .benefits-strip { margin: 0 -28px; padding: 24px 28px; }
+            .stamp { display: none; }
+        }
+
+        /* ── Responsive: Mobile ── */
+        @media (max-width: 520px) {
+            body { font-size: 13px; }
+            .page { padding: 20px 18px 16px; }
+
+            header { margin-bottom: 24px; padding-bottom: 14px; }
+            header .logo img { height: 26px; }
+            header .meta { font-size: 0.65rem; }
+            header .meta .badge { font-size: 0.58rem; padding: 0.15rem 0.5rem; }
+
+            .title-block { margin-bottom: 24px; }
+            .title-block h1 { font-size: 1.8rem; }
+            .title-block .subtitle { font-size: 0.88rem; }
+
+            .section-title { font-size: 1.15rem; }
+
+            .two-col { gap: 24px; margin-bottom: 24px; }
+
+            .thesis { padding: 16px 18px; }
+            .thesis p { font-size: 0.82rem; }
+            .thesis ul li { font-size: 0.8rem; }
+
+            .specs { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .spec { padding: 12px 14px; }
+            .spec h3 { font-size: 0.82rem; }
+            .spec p { font-size: 0.72rem; }
+
+            .benefits-strip { margin: 0 -18px; padding: 20px 18px; margin-bottom: 24px; }
+            .benefits-strip .section-title { font-size: 1.1rem; margin-bottom: 12px; }
+            .benefits-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .benefit { padding: 12px; }
+            .benefit .num { font-size: 1.2rem; margin-bottom: 4px; }
+            .benefit h3 { font-size: 0.78rem; margin-bottom: 2px; }
+            .benefit p { font-size: 0.7rem; }
+
+            .cta { padding: 20px 0 16px; }
+            .cta h2 { font-size: 1.3rem; }
+            .cta p { font-size: 0.8rem; }
+            .cta-button { font-size: 0.75rem; padding: 0.6rem 1.5rem; }
+
+            footer { font-size: 0.65rem; }
+        }
+
+        /* ── Responsive: Very small ── */
+        @media (max-width: 360px) {
+            .title-block h1 { font-size: 1.5rem; }
             .specs { grid-template-columns: 1fr; }
             .benefits-grid { grid-template-columns: 1fr; }
-            .benefits-strip { margin: 0 -24px; padding: 24px; }
-            .stamp { display: none; }
         }
 
         @media print {
