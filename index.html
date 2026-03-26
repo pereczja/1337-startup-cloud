@@ -22,531 +22,415 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
-
         body {
             font-family: 'DM Mono', Consolas, monospace;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            font-size: 15px;
+            line-height: 1.55;
+            font-size: 13px;
         }
 
         h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 48px 32px;
+        }
 
-        /* ── Hero ── */
-        .hero {
-            min-height: 100vh;
+        /* ── Header ── */
+        header {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 80px 0;
-            position: relative;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
         }
 
-        .hero-logo img { height: 40px; margin-bottom: 3rem; }
+        header .logo img { height: 32px; }
 
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1.05;
-            margin-bottom: 1.5rem;
-            max-width: 800px;
-        }
-
-        .hero h1 span { color: var(--purple); }
-
-        .hero .subtitle {
-            font-size: 1.15rem;
-            color: var(--stone);
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--purple);
-            border: 1px solid var(--purple);
-            padding: 0.3rem 0.9rem;
-            border-radius: 2px;
-            margin-bottom: 2rem;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+        header .meta {
+            text-align: right;
             font-size: 0.75rem;
             color: var(--stone);
-            opacity: 0.5;
-            text-align: center;
         }
 
-        .scroll-hint .arrow {
-            display: block;
-            margin-top: 0.5rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(6px); }
-            60% { transform: translateY(3px); }
-        }
-
-        /* ── Sections ── */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-label {
-            font-size: 0.7rem;
+        header .meta .badge {
+            display: inline-block;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             color: var(--purple);
-            margin-bottom: 1rem;
+            border: 1px solid var(--purple);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            margin-bottom: 0.4rem;
         }
 
-        .section h2 {
+        /* ── Title ── */
+        .title-block {
+            margin-bottom: 36px;
+        }
+
+        .title-block h1 {
             font-size: 2.8rem;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-            max-width: 700px;
+            line-height: 1.08;
+            margin-bottom: 0.6rem;
         }
 
-        .section .lead {
+        .title-block h1 span { color: var(--purple); }
+
+        .title-block .subtitle {
             font-size: 1rem;
             color: var(--stone);
-            max-width: 600px;
-            margin-bottom: 3rem;
+            max-width: 500px;
         }
 
-        /* ── Thesis ── */
-        .thesis-block {
-            background: var(--card);
-            padding: 3rem;
-            border-radius: 12px;
-            max-width: 800px;
-            position: relative;
-        }
-
-        .thesis-block::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--purple);
-            border-radius: 12px 0 0 12px;
-        }
-
-        .thesis-block p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--stone-dark);
-        }
-
-        .thesis-block p strong { color: var(--text); }
-
-        .thesis-source {
-            margin-top: 1.5rem;
-            font-size: 0.8rem;
-            color: var(--stone);
-        }
-
-        .thesis-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .thesis-list li {
-            padding: 0.4rem 0;
-            font-size: 0.95rem;
-            color: var(--stone-dark);
-        }
-
-        .thesis-list li::before {
-            content: '\2192';
-            color: var(--purple);
-            margin-right: 0.75rem;
-            font-weight: 500;
-        }
-
-        /* ── What we're building ── */
-        .specs-grid {
+        /* ── Two-col layout ── */
+        .two-col {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
         }
 
-        .spec-card {
+        /* ── Section labels ── */
+        .label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--purple);
+            margin-bottom: 0.6rem;
+        }
+
+        .label.orange { color: var(--orange); }
+
+        /* ── Section titles ── */
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        /* ── Thesis block ── */
+        .thesis {
             background: var(--card);
-            padding: 1.75rem;
-            border-radius: 10px;
-            transition: transform 0.2s;
+            padding: 20px 24px;
+            border-radius: 8px;
+            border-left: 3px solid var(--purple);
         }
 
-        .spec-card:hover { transform: translateY(-2px); }
-
-        .spec-card .icon {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+        .thesis p {
+            font-size: 0.88rem;
+            color: var(--stone-dark);
+            line-height: 1.6;
         }
 
-        .spec-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+        .thesis p strong { color: var(--text); }
+
+        .thesis ul {
+            list-style: none;
+            margin: 10px 0;
         }
 
-        .spec-card p {
+        .thesis ul li {
+            padding: 2px 0;
             font-size: 0.85rem;
             color: var(--stone-dark);
-            line-height: 1.5;
         }
 
-        .spec-card.highlight {
+        .thesis ul li::before {
+            content: '\2192';
+            color: var(--purple);
+            margin-right: 8px;
+        }
+
+        /* ── Spec grid ── */
+        .specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .spec {
+            background: var(--card);
+            padding: 14px 16px;
+            border-radius: 8px;
+        }
+
+        .spec h3 {
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+
+        .spec p {
+            font-size: 0.78rem;
+            color: var(--stone-dark);
+            line-height: 1.45;
+        }
+
+        .spec.highlight {
             background: var(--purple);
             color: white;
         }
 
-        .spec-card.highlight h3 { color: white; }
-        .spec-card.highlight p { color: rgba(255,255,255,0.85); }
+        .spec.highlight h3 { color: white; }
+        .spec.highlight p { color: rgba(255,255,255,0.85); }
 
-        /* ── Benefits ── */
-        .benefits-section {
+        /* ── Benefits (dark strip) ── */
+        .benefits-strip {
             background: var(--dark);
             color: white;
-            padding: 100px 0;
-            margin: 0 -9999px;
-            padding-left: 9999px;
-            padding-right: 9999px;
+            margin: 0 -48px;
+            padding: 28px 48px;
+            margin-bottom: 32px;
         }
 
-        .benefits-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .benefits-section .section-label { color: var(--orange); }
-
-        .benefits-section h2 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .benefits-section .lead {
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 3rem;
-        }
+        .benefits-strip .label { color: var(--orange); margin-bottom: 0.5rem; }
+        .benefits-strip .section-title { color: white; font-size: 1.2rem; margin-bottom: 16px; }
 
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+            gap: 12px;
         }
 
-        .benefit-card {
+        .benefit {
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.08);
-            padding: 2rem;
-            border-radius: 10px;
-            transition: all 0.2s;
+            padding: 16px;
+            border-radius: 8px;
         }
 
-        .benefit-card:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.15);
-        }
-
-        .benefit-number {
+        .benefit .num {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--purple);
             line-height: 1;
-            margin-bottom: 1rem;
+            margin-bottom: 6px;
         }
 
-        .benefit-card h3 {
+        .benefit h3 {
             color: white;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
         }
 
-        .benefit-card p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.5;
+        .benefit p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.45;
         }
 
         /* ── CTA ── */
-        .cta-section {
-            padding: 120px 0;
+        .cta {
             text-align: center;
+            padding: 28px 0 20px;
+            border-top: 1px solid rgba(0,0,0,0.08);
         }
 
-        .cta-section h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
+        .cta h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
         }
 
-        .cta-section h2 span { color: var(--purple); }
+        .cta h2 span { color: var(--purple); }
 
-        .cta-section .lead {
-            max-width: 500px;
-            margin: 0 auto 2.5rem;
+        .cta p {
+            font-size: 0.85rem;
             color: var(--stone);
+            max-width: 420px;
+            margin: 0 auto 1.2rem;
         }
 
         .cta-button {
             display: inline-block;
             font-family: 'DM Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             background: var(--purple);
             color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 6px;
+            padding: 0.7rem 2rem;
+            border-radius: 5px;
             text-decoration: none;
-            transition: all 0.2s;
-            letter-spacing: 0.02em;
+            transition: background 0.2s;
         }
 
-        .cta-button:hover {
-            background: #6930d4;
-            transform: translateY(-1px);
-        }
+        .cta-button:hover { background: #6930d4; }
 
         /* ── Footer ── */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid rgba(0,0,0,0.08);
+        footer {
+            padding: 16px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .footer-logo img { height: 28px; }
-
-        .footer-text {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--stone);
         }
 
-        .footer-text a {
-            color: var(--purple);
-            text-decoration: none;
-        }
-
-        /* ── Divider ── */
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: var(--purple);
-            border-radius: 2px;
-            margin: 0 auto;
-        }
+        footer a { color: var(--purple); text-decoration: none; }
 
         /* ── Stamp ── */
         .stamp {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            opacity: 0.15;
-            z-index: 10;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.12;
         }
 
-        .stamp img { width: 80px; }
+        .stamp img { width: 70px; }
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-            .container { padding: 0 24px; }
-            .hero { min-height: auto; padding: 60px 0; }
-            .hero h1 { font-size: 2.5rem; }
-            .section h2 { font-size: 2rem; }
-            .specs-grid, .benefits-grid { grid-template-columns: 1fr; }
-            .thesis-block { padding: 2rem; }
+            .page { padding: 24px; }
+            .title-block h1 { font-size: 2rem; }
+            .two-col { grid-template-columns: 1fr; gap: 24px; }
+            .specs { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .benefits-strip { margin: 0 -24px; padding: 24px; }
             .stamp { display: none; }
         }
 
-        /* ── Scroll animations ── */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @media print {
+            .stamp { display: none; }
+            .benefits-strip { margin: 0; break-inside: avoid; }
+            body { font-size: 11px; }
+            .page { padding: 0; }
         }
     </style>
 </head>
 <body>
 
-<!-- Stamp -->
 <div class="stamp">
     <img src="assets/1337 stamp.png" alt="The Intelligence Company">
 </div>
 
-<!-- Hero -->
-<div class="container">
-    <section class="hero">
-        <div class="hero-logo">
+<div class="page">
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
             <img src="assets/1337 logo.png" alt="1337 Partners">
         </div>
-        <div class="hero-badge">Pre-validation Brief</div>
+        <div class="meta">
+            <div class="badge">Pre-validation Brief</div>
+            <br>v1.0 &middot; March 2026
+        </div>
+    </header>
+
+    <!-- Title -->
+    <div class="title-block">
         <h1>Startup <span>Cloud</span></h1>
         <p class="subtitle">Dedicated GPU infrastructure for the Hungarian startup ecosystem.</p>
-        <div class="scroll-hint">
-            Scroll to explore
-            <span class="arrow">&darr;</span>
-        </div>
-    </section>
-</div>
-
-<!-- Thesis -->
-<div class="container">
-    <section class="section fade-up">
-        <div class="section-label">Thesis</div>
-        <h2>The a16z model, brought to Hungary</h2>
-        <div class="thesis-block" style="margin-top: 2rem;">
-            <p>Not long ago, <strong>a16z secured dedicated GPU capacity</strong> exclusively for its portfolio companies. The advantage was immediate:</p>
-            <ul class="thesis-list">
-                <li>No waitlists</li>
-                <li>Founder-aligned pricing</li>
-                <li>Competitive advantage in AI development</li>
-            </ul>
-            <p style="margin-top: 1.5rem;"><strong>We are bringing the same model to Hungary.</strong></p>
-        </div>
-    </section>
-</div>
-
-<!-- What We're Building -->
-<div class="container">
-    <section class="section fade-up">
-        <div class="section-label">Infrastructure</div>
-        <h2>What we're building</h2>
-        <p class="lead">A founder-first GPU cloud, optimized for early-stage and scaling AI startups.</p>
-
-        <div class="specs-grid">
-            <div class="spec-card">
-                <div class="icon">&square;</div>
-                <h3>H200 Clusters</h3>
-                <p>Latest-gen GPU clusters deployed in Budapest. Local infrastructure, global performance.</p>
-            </div>
-            <div class="spec-card">
-                <div class="icon">&equiv;</div>
-                <h3>Bare Metal Access</h3>
-                <p>Maximum performance and control. No virtualization overhead, no noisy neighbors.</p>
-            </div>
-            <div class="spec-card">
-                <div class="icon">&harr;</div>
-                <h3>MIG-Enabled Fractional GPUs</h3>
-                <p>Flexible workloads. Scale from a fraction of a GPU to full clusters as you grow.</p>
-            </div>
-            <div class="spec-card highlight">
-                <div class="icon" style="opacity: 0.8;">~</div>
-                <h3>~70% Below AWS/GCP</h3>
-                <p>Near-breakeven pricing. Your runway goes further, your unit economics work from day one.</p>
-            </div>
-            <div class="spec-card">
-                <div class="icon">&oplus;</div>
-                <h3>EU Data Residency</h3>
-                <p>Full regulatory compliance for sensitive workloads. GDPR, NIS2, and sector-specific requirements covered.</p>
-            </div>
-            <div class="spec-card">
-                <div class="icon">&raquo;</div>
-                <h3>Priority Access</h3>
-                <p>Reserved capacity for partner portfolio companies. No competing with the open market.</p>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- Benefits (dark section) -->
-<div class="benefits-section">
-    <div class="benefits-inner">
-        <section class="section fade-up" style="padding: 0;">
-            <div class="section-label">For Venture Funds</div>
-            <h2>What's in it for you and your portfolio</h2>
-            <p class="lead">No CEE-based fund currently offers dedicated compute as part of their value-add. This changes that.</p>
-
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-number">01</div>
-                    <h3>Portfolio Differentiation</h3>
-                    <p>Offer something no other regional fund can. Dedicated compute access as a tangible, day-one value-add for portfolio companies.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">02</div>
-                    <h3>Increased Portfolio Velocity</h3>
-                    <p>Faster training, testing, and deployment cycles. Shorter time from idea to traction.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">03</div>
-                    <h3>Capital Efficiency</h3>
-                    <p>Startups burn less on infrastructure. Longer runway, better outcomes, stronger returns.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">04</div>
-                    <h3>Regulatory Advantage</h3>
-                    <p>EU-compliant infrastructure from day one. Portfolio companies can serve enterprise and regulated clients immediately.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">05</div>
-                    <h3>Focus on Core Product</h3>
-                    <p>No infra overhead. Teams stay focused on building, not managing compute.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">06</div>
-                    <h3>Priority Access</h3>
-                    <p>Reserved GPU capacity. Portfolio companies skip the queue and get guaranteed availability.</p>
-                </div>
-            </div>
-        </section>
     </div>
-</div>
 
-<!-- CTA -->
-<div class="container">
-    <section class="cta-section fade-up">
-        <div class="divider" style="margin-bottom: 3rem;"></div>
+    <!-- Thesis + What We're Building -->
+    <div class="two-col">
+
+        <!-- Left: Thesis -->
+        <div>
+            <div class="label">Thesis</div>
+            <h2 class="section-title">The a16z model, brought to Hungary</h2>
+            <div class="thesis">
+                <p>Not long ago, <strong>a16z secured dedicated GPU capacity</strong> exclusively for its portfolio companies.</p>
+                <ul>
+                    <li>No waitlists</li>
+                    <li>Founder-aligned pricing</li>
+                    <li>Competitive advantage in AI development</li>
+                </ul>
+                <p><strong>We are bringing the same model to Hungary.</strong></p>
+            </div>
+        </div>
+
+        <!-- Right: Infrastructure -->
+        <div>
+            <div class="label">Infrastructure</div>
+            <h2 class="section-title">What we're building</h2>
+            <p style="font-size: 0.82rem; color: var(--stone); margin-bottom: 12px;">A founder-first GPU cloud for early-stage and scaling AI startups.</p>
+            <div class="specs">
+                <div class="spec">
+                    <h3>H200 Clusters</h3>
+                    <p>Latest-gen GPUs deployed in Budapest.</p>
+                </div>
+                <div class="spec">
+                    <h3>Bare Metal Access</h3>
+                    <p>No virtualization overhead.</p>
+                </div>
+                <div class="spec">
+                    <h3>Fractional GPUs</h3>
+                    <p>MIG-enabled, scale as you grow.</p>
+                </div>
+                <div class="spec highlight">
+                    <h3>~70% Below AWS/GCP</h3>
+                    <p>Near-breakeven pricing.</p>
+                </div>
+                <div class="spec">
+                    <h3>EU Data Residency</h3>
+                    <p>GDPR, NIS2 compliant.</p>
+                </div>
+                <div class="spec">
+                    <h3>Priority Access</h3>
+                    <p>Reserved capacity for partners.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Benefits (dark strip) -->
+    <div class="benefits-strip">
+        <div class="label">For Venture Funds &amp; Portfolio Companies</div>
+        <h2 class="section-title">What's in it for you</h2>
+
+        <div class="benefits-grid">
+            <div class="benefit">
+                <div class="num">01</div>
+                <h3>Portfolio Differentiation</h3>
+                <p>No CEE fund offers dedicated compute as value-add. Be the first.</p>
+            </div>
+            <div class="benefit">
+                <div class="num">02</div>
+                <h3>Portfolio Velocity</h3>
+                <p>Faster training, testing, deployment. Shorter time to traction.</p>
+            </div>
+            <div class="benefit">
+                <div class="num">03</div>
+                <h3>Capital Efficiency</h3>
+                <p>Less infra burn. Longer runway, better outcomes.</p>
+            </div>
+            <div class="benefit">
+                <div class="num">04</div>
+                <h3>Regulatory Advantage</h3>
+                <p>EU-compliant from day one. Serve enterprise clients immediately.</p>
+            </div>
+            <div class="benefit">
+                <div class="num">05</div>
+                <h3>Focus on Core Product</h3>
+                <p>No infra overhead. Teams build, not manage compute.</p>
+            </div>
+            <div class="benefit">
+                <div class="num">06</div>
+                <h3>Priority Access</h3>
+                <p>Reserved GPU capacity. Skip the queue.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
         <h2>Let's <span>talk</span></h2>
-        <p class="lead">We're validating demand. If this resonates, we'd love 45 minutes of your time to walk through the concept and hear your perspective.</p>
-        <a href="mailto:janos@1337.partners?subject=1337%20Startup%20Cloud%20%E2%80%94%20Let's%20talk" class="cta-button">Get in touch &rarr;</a>
-    </section>
-</div>
+        <p>We're validating demand. If this resonates, we'd love 45 minutes to walk through the concept and hear your perspective.</p>
+        <a href="mailto:janos@1337.partners?subject=1337%20Startup%20Cloud" class="cta-button">Get in touch &rarr;</a>
+    </div>
 
-<!-- Footer -->
-<div class="container">
-    <footer class="footer">
-        <div class="footer-logo">
-            <img src="assets/1337 logo.png" alt="1337">
-        </div>
-        <div class="footer-text">
-            1337 Partners &middot; Budapest &middot; <a href="mailto:janos@1337.partners">janos@1337.partners</a>
-        </div>
+    <!-- Footer -->
+    <footer>
+        <span>1337 Partners &middot; Budapest</span>
+        <span><a href="mailto:janos@1337.partners">janos@1337.partners</a></span>
     </footer>
+
 </div>
-
-<!-- Scroll animation -->
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
